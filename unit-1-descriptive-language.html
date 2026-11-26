@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://cdn.pixabay.com; connect-src 'self'; media-src 'self' blob:;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DESCRIPTIVE LANGUAGE - Grow and Glow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1628;--bg-rgb:10,22,40;--accent:#22d3ee;--accent-rgb:34,211,238;--accent2:#a78bfa;--accent2-rgb:167,139,250;--text:#f1f5f9;--text-dim:#cbd5e1}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:clamp(1rem,1.45vw,1.22rem);line-height:1.65}
+.slide{position:fixed;inset:0;background-size:cover;background-position:center;background-color:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;flex-direction:column;justify-content:flex-start;padding:3vh 5vw 11vh;overflow-y:auto}
+.slide::-webkit-scrollbar{width:0}
+.slide{scrollbar-width:none}
+.slide.active{opacity:1;pointer-events:auto;z-index:2}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--bg-rgb),.9) 0%,rgba(var(--bg-rgb),.62) 48%,rgba(var(--bg-rgb),.2) 100%);z-index:0}
+.content{position:relative;z-index:1;width:min(80vw,1100px);max-width:80vw;background:rgba(var(--bg-rgb),.76);border:1px solid rgba(var(--accent-rgb),.45);box-shadow:0 0 28px rgba(var(--accent-rgb),.22),0 0 70px rgba(var(--accent2-rgb),.12);border-radius:18px;padding:2.1em 2.7em;backdrop-filter:blur(9px);margin:auto 0}
+@media(min-width:1600px){.content{max-width:64vw;width:min(64vw,1100px)}}
+@media(max-width:768px){.content{max-width:92vw;padding:1.4em 1.5em}.slide{padding:2vh 4vw 13vh}}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;transition:width .35s ease}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.8em;z-index:200;background:rgba(var(--bg-rgb),.88);border:1px solid rgba(var(--accent-rgb),.32);border-radius:40px;padding:8px 18px;backdrop-filter:blur(8px)}
+.nav button{background:none;border:1px solid rgba(var(--accent-rgb),.5);color:var(--accent);font-family:'Inter',sans-serif;font-size:1rem;padding:9px 18px;border-radius:24px;cursor:pointer;min-width:46px;min-height:44px;transition:.2s}
+.nav button:hover{background:rgba(var(--accent-rgb),.15);box-shadow:0 0 14px rgba(var(--accent-rgb),.3)}
+.nav .counter{font-family:'Inter',monospace;color:var(--text-dim);font-size:.85rem;min-width:58px;text-align:center}
+.nav .tool{font-size:.82rem;padding:8px 13px;color:var(--text-dim);border-color:rgba(var(--accent-rgb),.24)}
+h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.12;margin-bottom:.45em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.35))}
+h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.35rem,2.7vw,2.05rem);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:.55em}
+h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;color:var(--accent2);margin:.7em 0 .35em}
+p,li{margin-bottom:.45em}
+.subtitle{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--text-dim)}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);background:rgba(var(--accent-rgb),.13);border:1px solid rgba(var(--accent-rgb),.4);border-radius:8px;padding:4px 11px;margin-bottom:.6em}
+.question-card{background:linear-gradient(135deg,rgba(var(--accent-rgb),.07),rgba(var(--accent2-rgb),.06));border:1px solid rgba(var(--accent-rgb),.26);border-radius:13px;padding:.85em 1.15em;margin:.55em 0}
+.question-text{font-weight:500}
+.follow-ups{font-size:.86rem;color:var(--text-dim);margin-top:.4em;padding-left:.9em;border-left:2px solid rgba(var(--accent-rgb),.45)}
+.follow-ups b{color:var(--accent2);font-weight:600}
+.reveal-btn{margin-top:.5em;background:transparent;border:1px solid rgba(var(--accent-rgb),.45);color:var(--accent);border-radius:20px;padding:6px 14px;font:inherit;font-size:.8rem;cursor:pointer;min-height:38px}
+.reveal-btn:hover{background:rgba(var(--accent-rgb),.14)}
+.model-answer{display:none;margin-top:.55em;padding:.6em .8em;border-left:2px solid var(--accent2);background:rgba(var(--accent2-rgb),.08);border-radius:0 8px 8px 0}
+.model-answer.open{display:block}
+.answer-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700;margin-bottom:.25em}
+.vocab-word{border-bottom:2px dotted var(--accent2);cursor:help;position:relative}
+.vocab-word:hover{color:var(--accent2)}
+.vocab-word:hover::after{content:attr(data-def);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:290px;white-space:normal;background:var(--bg);border:1px solid var(--accent2);border-radius:8px;padding:7px 10px;font-size:.8rem;color:var(--text);z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7em}
+.vocab-item{background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;padding:.7em .9em}
+.vocab-item b{color:var(--accent2);font-size:1.05rem}
+.vocab-item p{font-size:.84rem;color:var(--text-dim);margin:.25em 0 0}
+.question-card .vocab-word{font-weight:600}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.match-col{display:flex;flex-direction:column;gap:.5em}
+.match-btn,.token{background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.35);color:var(--text);border-radius:10px;padding:.55em .8em;font:inherit;font-size:.9rem;cursor:pointer;text-align:left;min-height:44px}
+.match-btn:hover,.token:hover{border-color:var(--accent)}
+.match-btn.done,.token.used{opacity:.35;pointer-events:none;border-color:var(--accent2)}
+.match-btn.selected{border-color:var(--accent2);box-shadow:0 0 0 2px rgba(var(--accent2-rgb),.3)}
+.reorder-row{margin:.7em 0}
+.reorder-target{min-height:46px;border:1px dashed rgba(var(--accent2-rgb),.5);border-radius:10px;padding:.35em .6em;margin-top:.4em;font-size:.92rem;color:var(--accent2)}
+.token-row{display:flex;flex-wrap:wrap;gap:.4em;margin-top:.4em}
+.token{padding:.35em .65em;font-size:.86rem}
+.check-btn{margin-top:.5em;background:rgba(var(--accent-rgb),.14);border:1px solid var(--accent);color:var(--accent);border-radius:20px;padding:7px 16px;font:inherit;font-size:.82rem;cursor:pointer;min-height:40px}
+.mark-complete-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08121c;border:none;border-radius:24px;padding:11px 24px;font-weight:700;font-size:.9rem;cursor:pointer;min-height:46px}
+.mark-complete-btn.done{background:transparent;border:1px solid var(--green);color:var(--green)}
+.start-prompt{font-size:.82rem;color:var(--text-dim);margin-top:1em}
+ul{padding-left:1.2em}
+.answer-text{font-size:.95rem}
+.small{font-size:.84rem;color:var(--text-dim)}
+
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar" style="width:8.3%;"></div>
+<section class="slide active" data-slide="0" style="background-image:url('https://images.pexels.com/photos/31219842/pexels-photo-31219842.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Grow and Glow</span>
+<h1>Descriptive Language</h1>
+<p class="subtitle">Tell a story from three pictures. Use vivid detail, sequence words, and your own voice.</p>
+<p class="small"></p>
+<button class="mark-complete-btn" id="markCompleteBtn" onclick="toggleMarkComplete(this)">Mark Complete</button>
+<p class="start-prompt">Press &rarr; or Space to begin. Theme changes the colours.</p>
+</div></section><section class="slide" data-slide="1" style="background-image:url('https://images.pexels.com/photos/1667341/pexels-photo-1667341.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Warm-Up</span>
+<h2>Look Closer</h2>
+<p class="small">Forget the whole scene for a moment. Find one small thing most people would miss.</p>
+<div class="question-card"><p class="question-text">On your way to school, what small detail would you draw if you had to paint the journey?</p>
+<p class="follow-ups"><b>Go further:</b> What would that detail tell a stranger about your morning?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The crack in the pavement outside the konbini. I pass it every day and never look at it, but it tells you the rain comes in hard here.</div></div></div>
+<div class="question-card"><p class="question-text">Think of a place you know well. Which sound reaches you first when you close your eyes and picture it?</p>
+<p class="follow-ups"><b>Go further:</b> What changes about the place when that sound disappears?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The crossing bell near my station. Without it the whole street feels like a silent film, even though the shops are still busy.</div></div></div>
+</div></section><section class="slide" data-slide="2" style="background-image:url('https://images.pexels.com/photos/34498268/pexels-photo-34498268.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Grammar in Context</span>
+<h2>First, Then, After That, Finally</h2>
+<p class="small">Sequence words carry a listener through a story. Adjectives give the listener something to see.</p>
+<div class="question-card"><p class="question-text">My morning was a <span class="vocab-word" data-def="old and slightly broken">shabby</span> mess. First I missed the bus. Then my umbrella broke. After that I found my homework still on the kitchen table. Finally I laughed. Which moment would you keep if you had to cut two?</p>
+<p class="follow-ups"><b>Go further:</b> What would you add in its place to make the story clearer?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I would keep the broken umbrella. The other moments are things that happened, but the umbrella is something I could see and feel.</div></div></div>
+<div class="question-card"><p class="question-text">Describe your worst morning using four sequence words and two adjectives. Keep it under forty words.</p>
+<p class="follow-ups"><b>Go further:</b> Which adjective did you choose carefully, and why that one?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">First the alarm failed. Then the train was <span class="vocab-word" data-def="full of people">crowded</span> and hot. After that my friend called me late. Finally I walked into class with wet shoes.</div></div></div>
+</div></section><section class="slide" data-slide="3" style="background-image:url('https://images.pexels.com/photos/30487724/pexels-photo-30487724.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Picture Prompts</span>
+<h2>Three Pictures, One Story</h2>
+<p class="small">A strong story picks one odd detail and follows it.</p>
+<div class="question-card"><p class="question-text">A stranger leaves a single yellow umbrella on a train seat. What do you think happened before the train arrived?</p>
+<p class="follow-ups"><b>Go further:</b> What does the next passenger do with it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Someone bought it for a friend and then got off at the wrong stop. The next passenger takes a photo of it and puts it back, because returning it feels like admitting they noticed.</div></div></div>
+<div class="question-card"><p class="question-text">A shop has one <span class="vocab-word" data-def="full of light">bright</span> light on and every other light off. What is the owner doing at that moment?</p>
+<p class="follow-ups"><b>Go further:</b> Who is waiting outside, and why?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The owner is counting coins at the till after a long day. A delivery driver waits at the door with a box the shop never ordered.</div></div></div>
+<div class="question-card"><p class="question-text">A child is drawing a huge, <span class="vocab-word" data-def="warm and happy">cheerful</span> sun on a grey wall. What made them start?</p>
+<p class="follow-ups"><b>Go further:</b> What do the adults nearby say when they see it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">They saw the grey wall first and felt bored, so they gave it a sun. One adult stops and asks if they can add a few birds.</div></div></div>
+</div></section><section class="slide" data-slide="4" style="background-image:url('https://images.pexels.com/photos/37121878/pexels-photo-37121878.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Word Bank</span>
+<h2>Words That Paint</h2>
+<p class="small">Click a word to see its meaning. Try to use two of them in your next story.</p>
+<div class="vocab-grid">
+<div class="vocab-item"><b>vivid</b><p>so clear and bright that you can almost see it</p><p class="small">What <span class="vocab-word" data-def="bright and clear, easy to picture">vivid</span> colour is in the room you are sitting in right now?</p></div>
+<div class="vocab-item"><b>shabby</b><p>old and slightly broken, but still liked</p><p class="small">What <span class="vocab-word" data-def="old and slightly broken">shabby</span> object at your school would you secretly keep?</p></div>
+<div class="vocab-item"><b>cheerful</b><p>happy in a warm, easy way</p><p class="small">Who is the most <span class="vocab-word" data-def="warm and happy">cheerful</span> person in your class, and how do you know?</p></div>
+<div class="vocab-item"><b>glimpse</b><p>a quick look at something</p><p class="small">What did you <span class="vocab-word" data-def="a quick look">glimpse</span> on your way here that you want to see again?</p></div>
+<div class="vocab-item"><b>enormous</b><p>extremely big</p><p class="small">What <span class="vocab-word" data-def="extremely big">enormous</span> thing have you seen up close this year?</p></div>
+</div>
+</div></section><section class="slide" data-slide="5" style="background-image:url('https://images.pexels.com/photos/3768884/pexels-photo-3768884.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Word Game</span>
+<h2>Match the Meaning</h2>
+<p class="small">Match each word to its meaning. Say a sentence with the word after you match it.</p>
+<div class="match-grid"><div class="match-col">
+<button class="match-btn" data-match="glimpse" onclick="pickMatch(this)">glimpse</button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)">shabby</button>
+<button class="match-btn" data-match="vivid" onclick="pickMatch(this)">vivid</button>
+<button class="match-btn" data-match="cheerful" onclick="pickMatch(this)">cheerful</button>
+<button class="match-btn" data-match="enormous" onclick="pickMatch(this)">enormous</button>
+</div><div class="match-col">
+<button class="match-btn" data-match="glimpse" onclick="pickMatch(this)">a quick look</button>
+<button class="match-btn" data-match="enormous" onclick="pickMatch(this)">very large</button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)">worn and untidy</button>
+<button class="match-btn" data-match="cheerful" onclick="pickMatch(this)">warm and happy</button>
+<button class="match-btn" data-match="vivid" onclick="pickMatch(this)">bright and clear</button>
+</div></div>
+</div></section><section class="slide" data-slide="6" style="background-image:url('https://images.pexels.com/photos/35068510/pexels-photo-35068510.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Speaking Practice</span>
+<h2>Stories With a Turn</h2>
+<p class="small">A turn is the moment the story changes direction. Give your story one.</p>
+<div class="question-card"><p class="question-text">Tell me about a time you got completely lost. Start with where you thought you were going.</p>
+<p class="follow-ups"><b>Go further:</b> What did you do in the first minute after you realised?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I followed the wrong exit at the station and ended up in a street I did not know. I stood still, opened the map, and pretended I had meant to explore.</div></div></div>
+<div class="question-card"><p class="question-text">Describe a gift you gave someone that was not expensive but took effort.</p>
+<p class="follow-ups"><b>Go further:</b> What did their face do when they opened it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I made my friend a paper book of our class jokes. She read one page and laughed before she said thank you, which was the best part.</div></div></div>
+<div class="question-card"><p class="question-text">Think of a day when the weather ruined a plan. What did you do instead?</p>
+<p class="follow-ups"><b>Go further:</b> Would you choose that new plan again?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Rain stopped our picnic, so we sat in the station café and drew each other. I would choose it again because we talked more than we would have outside.</div></div></div>
+</div></section><section class="slide" data-slide="7" style="background-image:url('https://images.pexels.com/photos/5990698/pexels-photo-5990698.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Picture Story</span>
+<h2>Sixty Seconds</h2>
+<p class="small">Pick three pictures in your mind: a person, a place, and one small object. Link them in one minute.</p>
+<div class="question-card"><p class="question-text">Your story begins with a door that is open when it should be closed. Who opens it?</p>
+<p class="follow-ups"><b>Go further:</b> What is the first thing the person sees beyond it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The cleaning lady opens it because she heard a noise. Beyond it she sees the class hamster sitting on the windowsill, very calm.</div></div></div>
+<div class="question-card"><p class="question-text">The object in your story is an old train ticket. Why does the person keep it?</p>
+<p class="follow-ups"><b>Go further:</b> What would happen if the ticket were lost?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">It came from a trip with his grandmother, so he keeps it in his pencil case. If he lost it, he would still remember the trip but he would feel careless.</div></div></div>
+</div></section><section class="slide" data-slide="8" style="background-image:url('https://images.pexels.com/photos/37898351/pexels-photo-37898351.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Sentence Game</span>
+<h2>Put the Story in Order</h2>
+<p class="small">Rebuild the sentences, then say the whole story aloud.</p>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-0">
+<button class="token" onclick="appendToken(this,0)">test</button>
+<button class="token" onclick="appendToken(this,0)">the</button>
+<button class="token" onclick="appendToken(this,0)">felt</button>
+<button class="token" onclick="appendToken(this,0)">before</button>
+<button class="token" onclick="appendToken(this,0)">nervous</button>
+<button class="token" onclick="appendToken(this,0)">I</button>
+</div><div class="reorder-target" id="tgt-0" data-answer="felt I nervous before the test"></div>
+<button class="check-btn" onclick="checkRow(0)">Check</button> <button class="check-btn" onclick="resetRow(0)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-1">
+<button class="token" onclick="appendToken(this,1)">hall</button>
+<button class="token" onclick="appendToken(this,1)">ran</button>
+<button class="token" onclick="appendToken(this,1)">that</button>
+<button class="token" onclick="appendToken(this,1)">we</button>
+<button class="token" onclick="appendToken(this,1)">to</button>
+<button class="token" onclick="appendToken(this,1)">bell</button>
+<button class="token" onclick="appendToken(this,1)">the</button>
+<button class="token" onclick="appendToken(this,1)">After</button>
+<button class="token" onclick="appendToken(this,1)">the</button>
+</div><div class="reorder-target" id="tgt-1" data-answer="After the bell that we ran to the hall"></div>
+<button class="check-btn" onclick="checkRow(1)">Check</button> <button class="check-btn" onclick="resetRow(1)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-2">
+<button class="token" onclick="appendToken(this,2)">Finally</button>
+<button class="token" onclick="appendToken(this,2)">and</button>
+<button class="token" onclick="appendToken(this,2)">done</button>
+<button class="token" onclick="appendToken(this,2)">the</button>
+<button class="token" onclick="appendToken(this,2)">said</button>
+<button class="token" onclick="appendToken(this,2)">smiled</button>
+<button class="token" onclick="appendToken(this,2)">teacher</button>
+<button class="token" onclick="appendToken(this,2)">well</button>
+</div><div class="reorder-target" id="tgt-2" data-answer="Finally smiled teacher the and said well done"></div>
+<button class="check-btn" onclick="checkRow(2)">Check</button> <button class="check-btn" onclick="resetRow(2)">Reset</button></div>
+</div></section><section class="slide" data-slide="9" style="background-image:url('https://images.pexels.com/photos/34947070/pexels-photo-34947070.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Challenge</span>
+<h2>Describe It Without Naming It</h2>
+<p class="small">Choose an object in the room. Describe it for ninety seconds without saying its name. Your partner guesses.</p>
+<div class="question-card"><p class="question-text">Which object will you describe, and which adjective will you hide until the end?</p>
+<p class="follow-ups"><b>Go further:</b> What clue would make the guess too easy?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I will describe my school bag. I will save the word <span class="vocab-word" data-def="old and slightly broken">shabby</span> for last, because the colour gives it away.</div></div></div>
+<div class="question-card"><p class="question-text">When your partner describes something vague, which question do you ask to get a <span class="vocab-word" data-def="bright and clear, easy to picture">vivid</span> detail?</p>
+<p class="follow-ups"><b>Go further:</b> Why does that question work better than asking what colour it is?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I ask where they would find it at home. Colour is hard for some people, but a place gives you a picture.</div></div></div>
+</div></section><section class="slide" data-slide="10" style="background-image:url('https://images.pexels.com/photos/35285315/pexels-photo-35285315.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Go Deeper</span>
+<h2>The Detail Behind the Story</h2>
+<p class="small">Move away from what happened. Talk about why you remembered it.</p>
+<div class="question-card"><p class="question-text">Which small detail from your own life would you put in a story for someone who has never met you?</p>
+<p class="follow-ups"><b>Go further:</b> What would they understand about you from that detail?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The scratched corner of my desk. I have had it since first year and I still sit there, so they would know I like things that stay.</div></div></div>
+<div class="question-card"><p class="question-text">Why do you think people remember smells better than dates?</p>
+<p class="follow-ups"><b>Go further:</b> Can you give a smell that takes you straight back to one afternoon?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Dates are numbers, but a smell arrives with the whole room. Rain on hot pavement takes me back to a summer walk after school.</div></div></div>
+<div class="question-card"><p class="question-text">If you could show one minute of your life to a pen pal, which minute would you choose?</p>
+<p class="follow-ups"><b>Go further:</b> What would they be unable to understand without your explanation?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The minute our club practice ends and everyone stops at once. They would not know why we are all laughing, so I would have to <span class="vocab-word" data-def="to make clear">explain</span> the joke.</div></div></div>
+</div></section><section class="slide" data-slide="11" style="background-image:url('https://images.pexels.com/photos/963628/pexels-photo-963628.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Wrap-Up</span>
+<h2>Your Story Toolkit</h2>
+<p class="small">Three sequence words, two <span class="vocab-word" data-def="bright and clear, easy to picture">vivid</span> adjectives, one small detail. Write them in your notebook and use them this week.</p>
+<div class="question-card"><p class="question-text">Which word from today will you use tomorrow without thinking about it?</p>
+<p class="follow-ups"><b>Go further:</b> Where will you put it so you remember?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text"><span class="vocab-word" data-def="a quick look">Glimpse</span>. I will write it on the corner of my timetable.</div></div></div>
+</div></section>
+<div class="nav">
+<button onclick="prev()" aria-label="Previous slide">&#8592;</button>
+<span class="counter" id="counter">1 / 12</span>
+<button onclick="next()" aria-label="Next slide">&#8594;</button>
+<button class="tool" onclick="cycleTheme()" aria-label="Change theme">Theme</button>
+</div>
+<script>
+var KEY='u1-descriptive-language';
+
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var idx=0;
+var THEMES=[
+ ['#0a1628','10,22,40','#22d3ee','34,211,238','#a78bfa','167,139,250','#f1f5f9','#cbd5e1'],
+ ['#160c1f','22,12,31','#f472b6','244,114,182','#c4b5fd','196,181,253','#fdf2f8','#e9d5ff'],
+ ['#071a16','7,26,22','#34d399','52,211,153','#fbbf24','251,191,36','#ecfdf5','#a7f3d0'],
+ ['#1a1005','26,16,5','#fbbf24','251,191,36','#fb7185','251,113,133','#fffbeb','#fde68a'],
+ ['#0d1024','13,16,36','#818cf8','129,140,248','#67e8f9','103,232,249','#eef2ff','#c7d2fe'],
+ ['#1a0a14','26,10,20','#fb7185','251,113,133','#fda4af','253,164,175','#fff1f2','#fecdd3']
+];
+var vars=['--bg','--bg-rgb','--accent','--accent-rgb','--accent2','--accent2-rgb','--text','--text-dim'];
+var theme=0;
+function applyTheme(n){theme=n%THEMES.length;THEMES[theme].forEach(function(v,i){document.documentElement.style.setProperty(vars[i],v)});try{localStorage.setItem(KEY+'-theme',theme)}catch(e){}}
+function cycleTheme(){applyTheme(theme+1)}
+var actx=null;
+function ensureAudio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}}
+function tone(f,d,type,g){if(!actx)return;var o=actx.createOscillator(),v=actx.createGain();o.type=type||'sine';o.frequency.value=f;v.gain.setValueAtTime(g||.05,actx.currentTime);v.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.connect(v);v.connect(actx.destination);o.start();o.stop(actx.currentTime+d)}
+function swish(){ensureAudio();tone(440,.12,'sine',.035)}
+function ding(){ensureAudio();tone(880,.18,'sine',.06);setTimeout(function(){tone(1320,.22,'sine',.04)},80)}
+function show(n){n=Math.max(0,Math.min(slides.length-1,n));slides[idx].classList.remove('active');idx=n;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%';slides[idx].scrollTop=0;swish();try{localStorage.setItem(KEY+'-pos',idx)}catch(e){}}
+function next(){show(idx+1)}
+function prev(){show(idx-1)}
+function revealAnswer(b){var a=b.nextElementSibling;a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Hide Answer':'Reveal Answer';ding()}
+function toggleMarkComplete(b){b.classList.toggle('done');var done=b.classList.contains('done');b.textContent=done?'Completed':'Mark Complete';try{localStorage.setItem(KEY+'-done',done?'1':'0')}catch(e){}if(ding)ding()}
+var sel=null;
+function pickMatch(el){if(el.classList.contains('done'))return;if(!sel){sel=el;el.classList.add('selected');return}if(el.dataset.match===sel.dataset.match){el.classList.add('done');sel.classList.add('done');ding()}else{sel.classList.remove('selected');tone(180,.15,'square',.03)}sel=null}
+function appendToken(el,row){if(el.classList.contains('used'))return;el.classList.add('used');var t=document.querySelector('#tgt-'+row);t.textContent+=(t.textContent?' ':'')+el.textContent.trim();tone(660,.08,'sine',.03)}
+function resetRow(row){document.querySelectorAll('#tokens-'+row+' .token').forEach(function(b){b.classList.remove('used')});document.getElementById('tgt-'+row).textContent=''}
+function checkRow(row){var t=document.getElementById('tgt-'+row);var want=t.getAttribute('data-answer').toLowerCase().replace(/[^a-z0-9 ]/g,'');var got=t.textContent.toLowerCase().replace(/[^a-z0-9 ]/g,'');if(got===want){t.style.color='var(--green)';ding()}else{t.style.color='var(--red)';tone(180,.18,'square',.03)}}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}if(e.key==='ArrowLeft'){e.preventDefault();prev()}});
+try{var p=parseInt(localStorage.getItem(KEY+'-pos')||'0',10);if(!isNaN(p)&&p<slides.length){slides[idx].classList.remove('active');idx=p;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%'}var t=parseInt(localStorage.getItem(KEY+'-theme')||'0',10);if(!isNaN(t))applyTheme(t);if(localStorage.getItem(KEY+'-done')==='1'){var m=document.getElementById('markCompleteBtn');if(m){m.classList.add('done');m.textContent='Completed'}}}catch(e){}
+
+</script>
+</body>
+</html>
