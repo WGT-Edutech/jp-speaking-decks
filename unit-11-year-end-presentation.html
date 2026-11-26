@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://cdn.pixabay.com; connect-src 'self'; media-src 'self' blob:;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY DREAM HOME - Grow and Glow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1628;--bg-rgb:10,22,40;--accent:#22d3ee;--accent-rgb:34,211,238;--accent2:#a78bfa;--accent2-rgb:167,139,250;--text:#f1f5f9;--text-dim:#cbd5e1}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:clamp(1rem,1.45vw,1.22rem);line-height:1.65}
+.slide{position:fixed;inset:0;background-size:cover;background-position:center;background-color:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;flex-direction:column;justify-content:flex-start;padding:3vh 5vw 11vh;overflow-y:auto}
+.slide::-webkit-scrollbar{width:0}
+.slide{scrollbar-width:none}
+.slide.active{opacity:1;pointer-events:auto;z-index:2}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--bg-rgb),.9) 0%,rgba(var(--bg-rgb),.62) 48%,rgba(var(--bg-rgb),.2) 100%);z-index:0}
+.content{position:relative;z-index:1;width:min(80vw,1100px);max-width:80vw;background:rgba(var(--bg-rgb),.76);border:1px solid rgba(var(--accent-rgb),.45);box-shadow:0 0 28px rgba(var(--accent-rgb),.22),0 0 70px rgba(var(--accent2-rgb),.12);border-radius:18px;padding:2.1em 2.7em;backdrop-filter:blur(9px);margin:auto 0}
+@media(min-width:1600px){.content{max-width:64vw;width:min(64vw,1100px)}}
+@media(max-width:768px){.content{max-width:92vw;padding:1.4em 1.5em}.slide{padding:2vh 4vw 13vh}}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;transition:width .35s ease}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.8em;z-index:200;background:rgba(var(--bg-rgb),.88);border:1px solid rgba(var(--accent-rgb),.32);border-radius:40px;padding:8px 18px;backdrop-filter:blur(8px)}
+.nav button{background:none;border:1px solid rgba(var(--accent-rgb),.5);color:var(--accent);font-family:'Inter',sans-serif;font-size:1rem;padding:9px 18px;border-radius:24px;cursor:pointer;min-width:46px;min-height:44px;transition:.2s}
+.nav button:hover{background:rgba(var(--accent-rgb),.15);box-shadow:0 0 14px rgba(var(--accent-rgb),.3)}
+.nav .counter{font-family:'Inter',monospace;color:var(--text-dim);font-size:.85rem;min-width:58px;text-align:center}
+.nav .tool{font-size:.82rem;padding:8px 13px;color:var(--text-dim);border-color:rgba(var(--accent-rgb),.24)}
+h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.12;margin-bottom:.45em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.35))}
+h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.35rem,2.7vw,2.05rem);text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:.55em}
+h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;color:var(--accent2);margin:.7em 0 .35em}
+p,li{margin-bottom:.45em}
+.subtitle{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--text-dim)}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);background:rgba(var(--accent-rgb),.13);border:1px solid rgba(var(--accent-rgb),.4);border-radius:8px;padding:4px 11px;margin-bottom:.6em}
+.question-card{background:linear-gradient(135deg,rgba(var(--accent-rgb),.07),rgba(var(--accent2-rgb),.06));border:1px solid rgba(var(--accent-rgb),.26);border-radius:13px;padding:.85em 1.15em;margin:.55em 0}
+.question-text{font-weight:500}
+.follow-ups{font-size:.86rem;color:var(--text-dim);margin-top:.4em;padding-left:.9em;border-left:2px solid rgba(var(--accent-rgb),.45)}
+.follow-ups b{color:var(--accent2);font-weight:600}
+.reveal-btn{margin-top:.5em;background:transparent;border:1px solid rgba(var(--accent-rgb),.45);color:var(--accent);border-radius:20px;padding:6px 14px;font:inherit;font-size:.8rem;cursor:pointer;min-height:38px}
+.reveal-btn:hover{background:rgba(var(--accent-rgb),.14)}
+.model-answer{display:none;margin-top:.55em;padding:.6em .8em;border-left:2px solid var(--accent2);background:rgba(var(--accent2-rgb),.08);border-radius:0 8px 8px 0}
+.model-answer.open{display:block}
+.answer-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700;margin-bottom:.25em}
+.vocab-word{border-bottom:2px dotted var(--accent2);cursor:help;position:relative}
+.vocab-word:hover{color:var(--accent2)}
+.vocab-word:hover::after{content:attr(data-def);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:290px;white-space:normal;background:var(--bg);border:1px solid var(--accent2);border-radius:8px;padding:7px 10px;font-size:.8rem;color:var(--text);z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7em}
+.vocab-item{background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;padding:.7em .9em}
+.vocab-item b{color:var(--accent2);font-size:1.05rem}
+.vocab-item p{font-size:.84rem;color:var(--text-dim);margin:.25em 0 0}
+.question-card .vocab-word{font-weight:600}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.match-col{display:flex;flex-direction:column;gap:.5em}
+.match-btn,.token{background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.35);color:var(--text);border-radius:10px;padding:.55em .8em;font:inherit;font-size:.9rem;cursor:pointer;text-align:left;min-height:44px}
+.match-btn:hover,.token:hover{border-color:var(--accent)}
+.match-btn.done,.token.used{opacity:.35;pointer-events:none;border-color:var(--accent2)}
+.match-btn.selected{border-color:var(--accent2);box-shadow:0 0 0 2px rgba(var(--accent2-rgb),.3)}
+.reorder-row{margin:.7em 0}
+.reorder-target{min-height:46px;border:1px dashed rgba(var(--accent2-rgb),.5);border-radius:10px;padding:.35em .6em;margin-top:.4em;font-size:.92rem;color:var(--accent2)}
+.token-row{display:flex;flex-wrap:wrap;gap:.4em;margin-top:.4em}
+.token{padding:.35em .65em;font-size:.86rem}
+.check-btn{margin-top:.5em;background:rgba(var(--accent-rgb),.14);border:1px solid var(--accent);color:var(--accent);border-radius:20px;padding:7px 16px;font:inherit;font-size:.82rem;cursor:pointer;min-height:40px}
+.mark-complete-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08121c;border:none;border-radius:24px;padding:11px 24px;font-weight:700;font-size:.9rem;cursor:pointer;min-height:46px}
+.mark-complete-btn.done{background:transparent;border:1px solid var(--green);color:var(--green)}
+.start-prompt{font-size:.82rem;color:var(--text-dim);margin-top:1em}
+ul{padding-left:1.2em}
+.answer-text{font-size:.95rem}
+.small{font-size:.84rem;color:var(--text-dim)}
+
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar" style="width:8.3%;"></div>
+<section class="slide active" data-slide="0" style="background-image:url('https://images.pexels.com/photos/30580640/pexels-photo-30580640.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Grow and Glow</span>
+<h1>My Dream Home</h1>
+<p class="subtitle">Four slides. Two minutes. Your own design, your own voice.</p>
+<p class="small"></p>
+<button class="mark-complete-btn" id="markCompleteBtn" onclick="toggleMarkComplete(this)">Mark Complete</button>
+<p class="start-prompt">Press &rarr; or Space to begin. Theme changes the colours.</p>
+</div></section><section class="slide" data-slide="1" style="background-image:url('https://images.pexels.com/photos/7765593/pexels-photo-7765593.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Warm-Up</span>
+<h2>First Impressions</h2>
+<p class="small">Start with a place you can already picture.</p>
+<div class="question-card"><p class="question-text">If you could wake up in any place tomorrow, where would it be?</p>
+<p class="follow-ups"><b>Go further:</b> What is the first thing you would see from the window?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">A small house near the sea. I would see the water before I saw the garden.</div></div></div>
+<div class="question-card"><p class="question-text">Describe your ideal room in three adjectives.</p>
+<p class="follow-ups"><b>Go further:</b> Which adjective would a friend disagree with?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text"><span class="vocab-word" data-def="full of light">Bright</span>, tidy, and calm. My friend would say calm is impossible with my desk.</div></div></div>
+</div></section><section class="slide" data-slide="2" style="background-image:url('https://images.pexels.com/photos/29012619/pexels-photo-29012619.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Grammar in Context</span>
+<h2>Four Slides, Four Patterns</h2>
+<p class="small">Present and future for the place. Adjectives and passive for the house. Modals for what you can do. Present perfect for who lives there.</p>
+<div class="question-card"><p class="question-text">Slide one: My dream home is in the mountains. I chose it because I love snow. Add one future sentence.</p>
+<p class="follow-ups"><b>Go further:</b> What future form sounds most natural here?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I will spend every winter there. 'Will' sounds like a real plan, while 'going to' sounds like a guess.</div></div></div>
+<div class="question-card"><p class="question-text">Slide two: The walls are painted blue. Why is passive useful?</p>
+<p class="follow-ups"><b>Go further:</b> What would the sentence be in active voice?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Someone painted the walls blue. Active sounds odd because nobody cares who did it.</div></div></div>
+</div></section><section class="slide" data-slide="3" style="background-image:url('https://images.pexels.com/photos/7746940/pexels-photo-7746940.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide One</span>
+<h2>Where Is It?</h2>
+<p class="small">Country, city, or nature. Give a reason a listener can feel.</p>
+<div class="question-card"><p class="question-text">Where exactly is your dream home, and why there?</p>
+<p class="follow-ups"><b>Go further:</b> What would you miss if you lived there?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">It is in the mountains of Hokkaido. I would miss the convenience of a shop on every corner.</div></div></div>
+<div class="question-card"><p class="question-text">What is the journey from your real home to your dream home like?</p>
+<p class="follow-ups"><b>Go further:</b> Which part of the journey do you enjoy?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">A train, then a bus, then a short walk. I enjoy the walk because the air changes.</div></div></div>
+</div></section><section class="slide" data-slide="4" style="background-image:url('https://images.pexels.com/photos/3912425/pexels-photo-3912425.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Word Bank</span>
+<h2>Words for a Home</h2>
+<p class="small">Click a word. Use two of them on slide two.</p>
+<div class="vocab-grid">
+<div class="vocab-item"><b>spacious</b><p>with plenty of room</p><p class="small">Which room in your home feels <span class="vocab-word" data-def="with plenty of room">spacious</span>?</p></div>
+<div class="vocab-item"><b>cosy</b><p>warm and comfortable</p><p class="small">Where is the cosiest place you know?</p></div>
+<div class="vocab-item"><b>shabby</b><p>old and slightly broken</p><p class="small">What <span class="vocab-word" data-def="old and slightly broken">shabby</span> thing would you keep in a dream home?</p></div>
+<div class="vocab-item"><b>bright</b><p>full of light</p><p class="small">Which room in your school is brightest?</p></div>
+<div class="vocab-item"><b>peaceful</b><p>calm and quiet</p><p class="small">When does your home feel <span class="vocab-word" data-def="calm and quiet">peaceful</span>?</p></div>
+</div>
+</div></section><section class="slide" data-slide="5" style="background-image:url('https://images.pexels.com/photos/31488380/pexels-photo-31488380.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Word Game</span>
+<h2>Match the Meaning</h2>
+<p class="small">Match the words. Then describe one room with two of them.</p>
+<div class="match-grid"><div class="match-col">
+<button class="match-btn" data-match="spacious" onclick="pickMatch(this)">spacious</button>
+<button class="match-btn" data-match="cosy" onclick="pickMatch(this)">cosy</button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)">shabby</button>
+<button class="match-btn" data-match="peaceful" onclick="pickMatch(this)">peaceful</button>
+<button class="match-btn" data-match="bright" onclick="pickMatch(this)">bright</button>
+</div><div class="match-col">
+<button class="match-btn" data-match="spacious" onclick="pickMatch(this)">with plenty of room</button>
+<button class="match-btn" data-match="bright" onclick="pickMatch(this)">full of light</button>
+<button class="match-btn" data-match="cosy" onclick="pickMatch(this)">warm and comfortable</button>
+<button class="match-btn" data-match="peaceful" onclick="pickMatch(this)">calm and quiet</button>
+<button class="match-btn" data-match="shabby" onclick="pickMatch(this)">worn and old</button>
+</div></div>
+</div></section><section class="slide" data-slide="6" style="background-image:url('https://images.pexels.com/photos/36731470/pexels-photo-36731470.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide Two</span>
+<h2>Slides Two & Four</h2>
+<p class="small">What it looks like, and who lives there. Choose three details for each.</p>
+<div class="question-card"><p class="question-text">Describe the outside of your dream home.</p>
+<p class="follow-ups"><b>Go further:</b> What would a neighbour <span class="vocab-word" data-def="to see or become aware">notice</span> first?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">It is a small wooden house with a blue door and a wide garden. A neighbour would <span class="vocab-word" data-def="to see or become aware">notice</span> the garden first.</div></div></div>
+<div class="question-card"><p class="question-text">Describe the room you would spend most time in.</p>
+<p class="follow-ups"><b>Go further:</b> What object would sit on the desk?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The kitchen, because it is <span class="vocab-word" data-def="full of light">bright</span> and <span class="vocab-word" data-def="with plenty of room">spacious</span>. On the desk there would be a small plant.</div></div></div>
+<div class="question-card"><p class="question-text">Who lives with you in your dream home?</p>
+<p class="follow-ups"><b>Go further:</b> How long have you known them?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">My family and one older dog. I have known my best friend since first year, and she lives nearby.</div></div></div>
+<div class="question-card"><p class="question-text">What has changed in your life because of the people you live with?</p>
+<p class="follow-ups"><b>Go further:</b> What have they taught you?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I have become more <span class="vocab-word" data-def="able to wait calmly">patient</span>. My sister taught me to wait before I answer.</div></div></div>
+</div></section><section class="slide" data-slide="7" style="background-image:url('https://images.pexels.com/photos/7801145/pexels-photo-7801145.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Slide Three</span>
+<h2>What Can You Do There?</h2>
+<p class="small">Use modals. Talk about activities inside and outside.</p>
+<div class="question-card"><p class="question-text">What can you do in your dream home that you cannot do now?</p>
+<p class="follow-ups"><b>Go further:</b> Who would you invite there first?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I can swim in the garden pool whenever I want. I would invite my whole club.</div></div></div>
+<div class="question-card"><p class="question-text">What could go wrong in this perfect place?</p>
+<p class="follow-ups"><b>Go further:</b> How would you fix it?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The garden would need too much work. I would ask my family to help and keep one small flower bed only.</div></div></div>
+</div></section><section class="slide" data-slide="8" style="background-image:url('https://images.pexels.com/photos/8761336/pexels-photo-8761336.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Sentence Game</span>
+<h2>Rebuild the Talk</h2>
+<p class="small">Put the sentences in order. Then say them with your own details.</p>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-0">
+<button class="token" onclick="appendToken(this,0)">mountains</button>
+<button class="token" onclick="appendToken(this,0)">the</button>
+<button class="token" onclick="appendToken(this,0)">in</button>
+<button class="token" onclick="appendToken(this,0)">My</button>
+<button class="token" onclick="appendToken(this,0)">is</button>
+<button class="token" onclick="appendToken(this,0)">home</button>
+<button class="token" onclick="appendToken(this,0)">dream</button>
+</div><div class="reorder-target" id="tgt-0" data-answer="My dream home is in the mountains"></div>
+<button class="check-btn" onclick="checkRow(0)">Check</button> <button class="check-btn" onclick="resetRow(0)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-1">
+<button class="token" onclick="appendToken(this,1)">are</button>
+<button class="token" onclick="appendToken(this,1)">walls</button>
+<button class="token" onclick="appendToken(this,1)">blue</button>
+<button class="token" onclick="appendToken(this,1)">The</button>
+<button class="token" onclick="appendToken(this,1)">painted</button>
+</div><div class="reorder-target" id="tgt-1" data-answer="The walls are painted blue"></div>
+<button class="check-btn" onclick="checkRow(1)">Check</button> <button class="check-btn" onclick="resetRow(1)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-2">
+<button class="token" onclick="appendToken(this,2)">the</button>
+<button class="token" onclick="appendToken(this,2)">pool</button>
+<button class="token" onclick="appendToken(this,2)">You</button>
+<button class="token" onclick="appendToken(this,2)">can</button>
+<button class="token" onclick="appendToken(this,2)">swim</button>
+<button class="token" onclick="appendToken(this,2)">in</button>
+</div><div class="reorder-target" id="tgt-2" data-answer="You can swim in the pool"></div>
+<button class="check-btn" onclick="checkRow(2)">Check</button> <button class="check-btn" onclick="resetRow(2)">Reset</button></div>
+<div class="reorder-row"><p class="small">&#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;</p><div class="token-row" id="tokens-3">
+<button class="token" onclick="appendToken(this,3)">have</button>
+<button class="token" onclick="appendToken(this,3)">here</button>
+<button class="token" onclick="appendToken(this,3)">for</button>
+<button class="token" onclick="appendToken(this,3)">lived</button>
+<button class="token" onclick="appendToken(this,3)">years</button>
+<button class="token" onclick="appendToken(this,3)">I</button>
+<button class="token" onclick="appendToken(this,3)">two</button>
+</div><div class="reorder-target" id="tgt-3" data-answer="I have lived here for two years"></div>
+<button class="check-btn" onclick="checkRow(3)">Check</button> <button class="check-btn" onclick="resetRow(3)">Reset</button></div>
+</div></section><section class="slide" data-slide="9" style="background-image:url('https://images.pexels.com/photos/5940846/pexels-photo-5940846.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Challenge</span>
+<h2>Two Minutes</h2>
+<p class="small">Four slides, one minute each at most. Do not read your notes.</p>
+<div class="question-card"><p class="question-text">Which slide will take you the longest?</p>
+<p class="follow-ups"><b>Go further:</b> What will you cut if you run over time?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Slide two, because I love describing rooms. I will cut the furniture list.</div></div></div>
+<div class="question-card"><p class="question-text">How will you end the talk?</p>
+<p class="follow-ups"><b>Go further:</b> What question will you leave the class with?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I will ask where they would build their dream home if money did not matter.</div></div></div>
+</div></section><section class="slide" data-slide="10" style="background-image:url('https://images.pexels.com/photos/1116302/pexels-photo-1116302.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Compliment Circle</span>
+<h2>Listen and Respond</h2>
+<p class="small">After each talk, give one specific compliment. No vague praise.</p>
+<div class="question-card"><p class="question-text">What makes a compliment feel real rather than polite?</p>
+<p class="follow-ups"><b>Go further:</b> Give one you received this year.</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">Naming the exact thing. My teacher said my story had a good last line, and I remembered it.</div></div></div>
+<div class="question-card"><p class="question-text">What would you say if a classmate forgot half their talk?</p>
+<p class="follow-ups"><b>Go further:</b> Which words help them try again?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">I would say the picture part was clear. Then I would ask about the part they skipped.</div></div></div>
+<div class="question-card"><p class="question-text">What did you learn about a classmate from their dream home?</p>
+<p class="follow-ups"><b>Go further:</b> What surprised you?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">That my quiet friend wants a huge kitchen. I had no idea she loved cooking.</div></div></div>
+</div></section><section class="slide" data-slide="11" style="background-image:url('https://images.pexels.com/photos/14890717/pexels-photo-14890717.jpeg?auto=compress&cs=tinysrgb&w=1280')">
+<div class="content">
+<span class="section-badge">Wrap-Up</span>
+<h2>One Year of Speaking</h2>
+<p class="small">You described a picture, reported a message, explained a process, and gave a talk. Keep going.</p>
+<div class="question-card"><p class="question-text">Which deck from this year changed how you speak?</p>
+<p class="follow-ups"><b>Go further:</b> What will you take into next year?</p>
+<button class="reveal-btn" onclick="revealAnswer(this)">Reveal Answer</button>
+<div class="model-answer"><div class="answer-label">Possible answer</div><div class="answer-text">The story deck. I still look for small details before I describe anything.</div></div></div>
+</div></section>
+<div class="nav">
+<button onclick="prev()" aria-label="Previous slide">&#8592;</button>
+<span class="counter" id="counter">1 / 12</span>
+<button onclick="next()" aria-label="Next slide">&#8594;</button>
+<button class="tool" onclick="cycleTheme()" aria-label="Change theme">Theme</button>
+</div>
+<script>
+var KEY='u11-year-end-presentation';
+
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var idx=0;
+var THEMES=[
+ ['#0a1628','10,22,40','#22d3ee','34,211,238','#a78bfa','167,139,250','#f1f5f9','#cbd5e1'],
+ ['#160c1f','22,12,31','#f472b6','244,114,182','#c4b5fd','196,181,253','#fdf2f8','#e9d5ff'],
+ ['#071a16','7,26,22','#34d399','52,211,153','#fbbf24','251,191,36','#ecfdf5','#a7f3d0'],
+ ['#1a1005','26,16,5','#fbbf24','251,191,36','#fb7185','251,113,133','#fffbeb','#fde68a'],
+ ['#0d1024','13,16,36','#818cf8','129,140,248','#67e8f9','103,232,249','#eef2ff','#c7d2fe'],
+ ['#1a0a14','26,10,20','#fb7185','251,113,133','#fda4af','253,164,175','#fff1f2','#fecdd3']
+];
+var vars=['--bg','--bg-rgb','--accent','--accent-rgb','--accent2','--accent2-rgb','--text','--text-dim'];
+var theme=0;
+function applyTheme(n){theme=n%THEMES.length;THEMES[theme].forEach(function(v,i){document.documentElement.style.setProperty(vars[i],v)});try{localStorage.setItem(KEY+'-theme',theme)}catch(e){}}
+function cycleTheme(){applyTheme(theme+1)}
+var actx=null;
+function ensureAudio(){if(!actx){try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}}
+function tone(f,d,type,g){if(!actx)return;var o=actx.createOscillator(),v=actx.createGain();o.type=type||'sine';o.frequency.value=f;v.gain.setValueAtTime(g||.05,actx.currentTime);v.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.connect(v);v.connect(actx.destination);o.start();o.stop(actx.currentTime+d)}
+function swish(){ensureAudio();tone(440,.12,'sine',.035)}
+function ding(){ensureAudio();tone(880,.18,'sine',.06);setTimeout(function(){tone(1320,.22,'sine',.04)},80)}
+function show(n){n=Math.max(0,Math.min(slides.length-1,n));slides[idx].classList.remove('active');idx=n;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%';slides[idx].scrollTop=0;swish();try{localStorage.setItem(KEY+'-pos',idx)}catch(e){}}
+function next(){show(idx+1)}
+function prev(){show(idx-1)}
+function revealAnswer(b){var a=b.nextElementSibling;a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Hide Answer':'Reveal Answer';ding()}
+function toggleMarkComplete(b){b.classList.toggle('done');var done=b.classList.contains('done');b.textContent=done?'Completed':'Mark Complete';try{localStorage.setItem(KEY+'-done',done?'1':'0')}catch(e){}if(ding)ding()}
+var sel=null;
+function pickMatch(el){if(el.classList.contains('done'))return;if(!sel){sel=el;el.classList.add('selected');return}if(el.dataset.match===sel.dataset.match){el.classList.add('done');sel.classList.add('done');ding()}else{sel.classList.remove('selected');tone(180,.15,'square',.03)}sel=null}
+function appendToken(el,row){if(el.classList.contains('used'))return;el.classList.add('used');var t=document.querySelector('#tgt-'+row);t.textContent+=(t.textContent?' ':'')+el.textContent.trim();tone(660,.08,'sine',.03)}
+function resetRow(row){document.querySelectorAll('#tokens-'+row+' .token').forEach(function(b){b.classList.remove('used')});document.getElementById('tgt-'+row).textContent=''}
+function checkRow(row){var t=document.getElementById('tgt-'+row);var want=t.getAttribute('data-answer').toLowerCase().replace(/[^a-z0-9 ]/g,'');var got=t.textContent.toLowerCase().replace(/[^a-z0-9 ]/g,'');if(got===want){t.style.color='var(--green)';ding()}else{t.style.color='var(--red)';tone(180,.18,'square',.03)}}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}if(e.key==='ArrowLeft'){e.preventDefault();prev()}});
+try{var p=parseInt(localStorage.getItem(KEY+'-pos')||'0',10);if(!isNaN(p)&&p<slides.length){slides[idx].classList.remove('active');idx=p;slides[idx].classList.add('active');document.getElementById('counter').textContent=(idx+1)+' / '+slides.length;document.getElementById('progressBar').style.width=((idx+1)/slides.length*100)+'%'}var t=parseInt(localStorage.getItem(KEY+'-theme')||'0',10);if(!isNaN(t))applyTheme(t);if(localStorage.getItem(KEY+'-done')==='1'){var m=document.getElementById('markCompleteBtn');if(m){m.classList.add('done');m.textContent='Completed'}}}catch(e){}
+
+</script>
+</body>
+</html>
